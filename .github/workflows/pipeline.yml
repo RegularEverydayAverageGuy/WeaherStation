@@ -23,18 +23,22 @@ jobs:
         with:
           python-version: '3.6'
           
+      #Sets up a Python virtual enviroment
+      - name: Set up Python virtual environment
+        run: | 
+           pip install --upgrade pip
+           python -m venv testingEnvironment
+           testingEnvironment\Scripts\activate
+        
       #Checks files existence
       - name: Check file existence
         id: checkFiles
         uses: andstor/file-existence-action@v2
         with:
           files: "requirements.txt"
-          
-      #Sets up a Python virtual enviroment with all necesseary dependencies
-      - name: Set up Python virtual environment
-        run: | 
-           pip install --upgrade pip
-           python -m venv testingEnvironment
-           testingEnvironment\Scripts\activate
-        if: steps.checkFiles.outputs.files_exist == 'true'
-           run:pip install -r requirements.txt #Run only if the file exists
+      
+      #Installs dependencies if the necesseary files exist
+      - name: Install dependencies
+      - if: steps.checkFiles.outputs.files_exist == 'true'
+        run: pip install -r requirements.txt 
+  
