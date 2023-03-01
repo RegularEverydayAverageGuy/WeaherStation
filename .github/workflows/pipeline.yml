@@ -27,6 +27,6 @@ jobs:
       - name: Set up Python virtual environment
         run: | 
            pip install --upgrade pip
-           python -m venv testingEnviroment
+           python -m venv testingEnvironment
            testingEnvironment\Scripts\activate
            pip install -r requirements.txt
