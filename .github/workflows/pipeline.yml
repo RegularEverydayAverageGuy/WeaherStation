@@ -39,6 +39,6 @@ jobs:
       
       #Installs dependencies if the necesseary files exist
       - name: Install dependencies
-      - if: steps.checkFiles.outputs.files_exist == 'true'
+        if: steps.checkFiles.outputs.files_exist == 'true'
         run: pip install -r requirements.txt 
   
