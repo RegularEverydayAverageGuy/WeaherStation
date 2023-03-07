@@ -17,11 +17,11 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
       
-      #Installs Python version 3.6
-      - name: Install Python 3.6
+      #Installs Python version 3.7
+      - name: Install Python 3.7
         uses: actions/setup-python@v4
         with:
-          python-version: '3.6'
+          python-version: '3.7.9'
           
       #Sets up a Python virtual enviroment
       - name: Set up Python virtual environment
