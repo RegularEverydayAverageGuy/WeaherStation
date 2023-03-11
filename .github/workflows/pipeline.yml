@@ -27,10 +27,13 @@ jobs:
       - name: Set up Python virtual environment
         run: | 
            pip install --upgrade pip
-           python -m venv testingEnvironment
-           .\testingEnvironment\Scripts\activate
-           echo %VIRTUAL_ENV%
+           mkdir weatherStationEnv
+           cd weatherStationEnv
+           python -m venv .
+           ./Scripts/Activate.ps1
+           Write-Host "VIRTUAL_ENV: $env:VIRTUAL_ENV"
            pip install -r requirements.txt  
+           
       #Runs all unit test inside the Tests diretory
       - name: Run unit tests
         run: |
