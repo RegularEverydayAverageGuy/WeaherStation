@@ -30,3 +30,7 @@ jobs:
            python -m venv testingEnvironment
            testingEnvironment\Scripts\activate
            pip install -r requirements.txt  
+      #Runs all unit test inside the Tests diretory
+      - name: Run unit tests
+        run: |
+          python -m unittest discover Tests
