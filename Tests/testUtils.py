@@ -6,7 +6,7 @@ Created on Wed Mar  8 22:10:12 2023
 """
 
 import unittest
-import utils
+from utils import utils
 
 #Tests the utils module
 class TestUtils(unittest.TestCase):

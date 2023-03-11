@@ -5,7 +5,7 @@ Created on Tue Mar  7 20:16:53 2023
 @author: dalib
 """
 
-import utils
+from utils import utils
 
 #This is the root URL from which the data will be downloaded
 rootURL = "https://meteo.arso.gov.si/uploads/probase/www/observ/surface/text/en/"
