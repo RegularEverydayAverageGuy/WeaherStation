@@ -29,6 +29,7 @@ jobs:
            pip install --upgrade pip
            python -m venv testingEnvironment
            .\testingEnvironment\Scripts\activate
+           echo %VIRTUAL_ENV%
            pip install -r requirements.txt  
       #Runs all unit test inside the Tests diretory
       - name: Run unit tests
