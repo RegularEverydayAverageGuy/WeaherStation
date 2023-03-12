@@ -26,6 +26,7 @@ jobs:
       #Sets up a Python virtual enviroment
       - name: Set up Python virtual environment
         run: | 
+           dir
            python -m venv .
            ./Scripts/Activate.ps1
            Write-Host "VIRTUAL_ENV: $env:VIRTUAL_ENV"
