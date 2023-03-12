@@ -37,4 +37,4 @@ jobs:
       #Runs all unit test inside the Tests diretory
       - name: Run unit tests
         run: |
-          python -m unittest discover Tests
+          .\Scripts\python -m unittest discover Tests
