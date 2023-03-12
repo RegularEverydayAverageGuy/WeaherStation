@@ -30,8 +30,8 @@ jobs:
            python -m venv .
            .\Scripts\activate
            Write-Host "VIRTUAL_ENV: $env:VIRTUAL_ENV"
-           .\Scripts\pip install -r requirements.txt
-           .\Scripts\pip list
+           .\Scripts\python3 -m pip3 install -r requirements.txt
+           .\Scripts\pythom3 -m pip3 list
            
       #Runs all unit test inside the Tests diretory
       - name: Run unit tests
