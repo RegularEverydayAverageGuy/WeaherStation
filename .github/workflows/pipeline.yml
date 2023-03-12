@@ -26,14 +26,15 @@ jobs:
       #Sets up a Python virtual enviroment
       - name: Set up Python virtual environment
         run: | 
+           dir
            python -m venv .
-           ./Scripts/Activate.ps1
+           .\Scripts\activate
            Write-Host "VIRTUAL_ENV: $env:VIRTUAL_ENV"
-           pip install --user --upgrade pip
-           pip install -r requirements.txt
-           pip list
+           .\Scripts\python -m pip install --upgrade pip
+           .\Scripts\python -m pip install -r requirements.txt
+           .\Scripts\python -m pip list
            
       #Runs all unit test inside the Tests diretory
       - name: Run unit tests
         run: |
-          python -m unittest discover Tests
+          .\Scripts\python -m unittest discover Tests
