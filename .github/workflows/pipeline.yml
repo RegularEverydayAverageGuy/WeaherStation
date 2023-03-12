@@ -29,6 +29,7 @@ jobs:
            python -m venv .
            ./Scripts/Activate.ps1
            Write-Host "VIRTUAL_ENV: $env:VIRTUAL_ENV"
+           where python
            pip install --user --upgrade pip
            pip install -r requirements.txt
            pip list
