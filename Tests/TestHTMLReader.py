@@ -7,13 +7,13 @@ Created on Sun Mar 12 19:25:49 2023
 
 import unittest
 from unittest.mock import patch, mock_open
-from DataReaders import htmlReader
+from DataReaders import HtmlReader
 
-class TestXMLReader(unittest.TestCase):
+class TestHTMLReader(unittest.TestCase):
     '''Test class for testing the XMLReader functionality'''
     @classmethod
     def setUpClass(cls):
-        cls.reader = htmlReader.HTMLReader("C:/Data/test.html")
+        cls.reader = HtmlReader.HTMLReader("C:/Data/test.html")
         cls.mockFile = mock_open(read_data="<html><title>Data</title></html>")
      
     def testFilenameSetter(self):
@@ -23,17 +23,17 @@ class TestXMLReader(unittest.TestCase):
         
     def testWrongFormat(self):
         '''Tests whether the HTMLReader rejects a wrong file format'''
-        self.reader = htmlReader.HTMLReader("C:/Data/test.xml")
+        self.reader = HtmlReader.HTMLReader("C:/Data/test.xml")
         success = self.reader.readFile()
         self.assertFalse(success)      
         
-        self.reader = htmlReader.HTMLReader("C:/Data/test.txt")
+        self.reader = HtmlReader.HTMLReader("C:/Data/test.txt")
         success = self.reader.readFile()
         self.assertFalse(success) 
    
     def testCorrectFormat(self):
         '''Tests whether the function properly reads a file in correct format'''
-        self.reader = htmlReader.HTMLReader("C:/Data/test.html")
+        self.reader = HtmlReader.HTMLReader("C:/Data/test.html")
         with patch("builtins.open", self.mockFile):
             success = self.reader.readFile()
         
@@ -49,10 +49,10 @@ class TestXMLReader(unittest.TestCase):
         if success:
             data = self.reader.getData("")
             self.assertEqual(data, [])
-    
+
     def testNonEmptyRetrivedData(self):
         '''Tests whether the retrived data given the input identifier is correct'''
-        self.reader = htmlReader.HTMLReader("C:/Data/test.html")
+        self.reader = HtmlReader.HTMLReader("C:/Data/test.html")
         with patch("builtins.open", self.mockFile):
             success = self.reader.readFile()
         self.assertTrue(success)

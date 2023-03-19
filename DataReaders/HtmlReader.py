@@ -11,6 +11,8 @@ from bs4 import BeautifulSoup
 
 class DataReader(ABC):
     '''Base class for extracting varios types of data (XML,txt etc..)'''
+    def __init__(self):
+        '''Abstract class DataReader __init__'''
     
     @abstractmethod
     def readFile(self):
@@ -19,13 +21,21 @@ class DataReader(ABC):
     @abstractmethod
     def getData(self, *dataIdentifier):
         ''''Retrievs specififc data from the file'''
-        
+    
+    @abstractmethod
+    def setFilename(self, filename):
+        '''Sets the filename of the DataReader'''
+    
 class HTMLReader(DataReader):
     '''Sublclass of DataExtractor which extracts data in .xml format'''
     def __init__(self, filename):
         self.filename = filename
-        self.contents = []
-        
+        self.contents = BeautifulSoup()
+    
+    def setFilename(self, filename):
+        '''Sets the filename of the HTMLReader'''
+        self.filename = filename
+    
     def readFile(self):
         '''Checks and opens a .html file'''
         response = os.path.splitext(self.filename)

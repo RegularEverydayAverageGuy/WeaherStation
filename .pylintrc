@@ -216,8 +216,9 @@ method-naming-style=camelCase
 # Regular expression matching correct method names. Overrides method-naming-
 # style. If left empty, method names will be checked with the set naming style.
 #method-rgx=
+
 # Naming style matching correct module names.
-module-naming-style=camelCase
+module-naming-style=PascalCase
 
 # Regular expression matching correct module names. Overrides module-naming-
 # style. If left empty, module names will be checked with the set naming style.
