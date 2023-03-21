@@ -10,34 +10,35 @@ from utils import utils
 #This is the root URL from which the data will be downloaded
 rootURL = "https://meteo.arso.gov.si/uploads/probase/www/observ/surface/text/en/"
 
-#Here type the name of the files that you want to download on the given rootURL
-files = ["observation_CELJE_latest.xml",
-         "observation_CERKLJE_LETAL-SCE_latest.xml",
-         "observation_CRNOMELJ_latest.xml",
-         "observation_KATARINA_latest.xml",
-         "observation_KOCEVJE_latest.xml",
-         "observation_KREDA-ICA_latest.xml",
-         "observation_LESCE_latest.xml",
-         "observation_LISCA_latest.xml",
-         "observation_LJUBL-ANA_BEZIGRAD_latest.xml",
-         "observation_LJUBL-ANA_BRNIK_latest.xml",
-         "observation_MARIBOR_SLIVNICA_latest.xml",
-         "observation_MURSK-SOB_latest.xml",
-         "observation_NOVA-GOR_latest.xml",
-         "observation_NOVO-MES_latest.xml",
-         "observation_PORTOROZ_SECOVLJE_latest.xml",
-         "observation_POSTOJNA_latest.xml",
-         "observation_RATECE_latest.xml",
-         "observation_SLOVE-GRA_latest.xml",
-         "observation_VOGEL_latest.xml",
-         "observation_VOJSKO_latest.xml"]
-         
-#Form file URLs
-fileURLs = utils.FormFileURLs(rootURL, files)
-#Download file from formed URLs
-success = utils.DownloadFiles(fileURLs, files)
 
-if(success):
-    print("\nData successfully downloaded to Data directory.")
+#Here type the name of the files that you want to download on the given rootURL
+files = ["observation_CELJE_history.html",
+         "observation_CERKLJE_LETAL-SCE_history.html",
+         "observation_CRNOMELJ_history.html",
+         "observation_KATARINA_history.html",
+         "observation_KOCEVJE_history.html",
+         "observation_KREDA-ICA_history.html",
+         "observation_LESCE_history.html",
+         "observation_LISCA_history.html",
+         "observation_LJUBL-ANA_BEZIGRAD_history.html",
+         "observation_LJUBL-ANA_BRNIK_history.html",
+         "observation_MARIBOR_SLIVNICA_history.html",
+         "observation_MURSK-SOB_history.html",
+         "observation_NOVA-GOR_history.html",
+         "observation_NOVO-MES_history.html",
+         "observation_PORTOROZ_SECOVLJE_history.html",
+         "observation_POSTOJNA_history.html",
+         "observation_RATECE_history.html",
+         "observation_SLOVE-GRA_history.html",
+         "observation_VOGEL_history.html",
+         "observation_VOJSKO_history.html"]
+     
+#Form file URLs
+fileURLs = utils.formFileURLs(rootURL, files)
+#Download file from formed URLs
+success = utils.downloadFiles(fileURLs, files)
+
+if success:
+    print("\n Succesfully downloaded and stored data from given URLs")
 else:
-    print("\nNo data was downoaded to Data directory.")
+    print("\n Download failed!")
