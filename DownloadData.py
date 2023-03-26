@@ -10,7 +10,6 @@ from utils import utils
 #This is the root URL from which the data will be downloaded
 rootURL = "https://meteo.arso.gov.si/uploads/probase/www/observ/surface/text/en/"
 
-
 #Here type the name of the files that you want to download on the given rootURL
 files = ["observation_CELJE_history.html",
          "observation_CERKLJE_LETAL-SCE_history.html",

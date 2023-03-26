@@ -15,7 +15,7 @@ class TestPrettyData(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.reader = HtmlReader.HTMLReader("C:/Data/test.html")
-        cls.prettyData = PrettyData(cls.reader);
+        cls.prettyData = PrettyData(cls.reader)
         
     def testRunReader(self):
         '''Test whether the reader when encounterd with empty files'''

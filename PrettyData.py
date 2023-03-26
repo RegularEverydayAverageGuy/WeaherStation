@@ -58,7 +58,7 @@ class PrettyData():
                 except ValueError:
                     data[count] = math.nan
                     
-            self.dataTable["Temperature [°C]"] = data
+            self.dataTable["Temperature"] = data
     
     def _getWindSpeed(self):
         '''Retrives wind speed data from file with help of DataReader object'''
@@ -71,7 +71,7 @@ class PrettyData():
                 except ValueError:
                     data[count] = math.nan
                     
-            self.dataTable["Wind speed [km/h]"] = data
+            self.dataTable["Wind speed"] = data
         
     def _getPressure(self):
         '''Retrives humidity data from file with help of DataReader object'''
@@ -84,7 +84,7 @@ class PrettyData():
                 except ValueError:
                     data[count] = math.nan
                     
-            self.dataTable["Pressure [hPa]"] = data
+            self.dataTable["Pressure"] = data
         
     def _getTimeData(self):
         '''Retrives time data from file with help of DataReader object'''
