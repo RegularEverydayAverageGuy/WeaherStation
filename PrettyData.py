@@ -18,12 +18,15 @@ class PrettyData():
 
     def runReader(self):
         '''Reads the file contets with the help of the reader object'''
-        self.reader.readFile()
+        success = self.reader.readFile()
+        
+        return success
         
     def updateReader(self, filename):
         '''Updates data from file with passed filename'''
         self.reader.setFilename(filename)
-        self.runReader()
+        success = self.runReader()
+        return success
 
     def populateDataTable(self):
         '''Populates the data table with chosen data'''
@@ -34,7 +37,7 @@ class PrettyData():
         self._getPressure()
         
     def clearDataTable(self):
-        '''Clear the data fro mthe data table'''
+        '''Clear the data from the data table'''
         if self.dataTable:
             self.dataTable = self.dataTable.clear()
             self.dataTable = {}
