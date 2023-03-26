@@ -5,24 +5,26 @@ Created on Tue Mar 21 22:48:03 2023
 @author: dalib
 """
 
-from DataReaders.HtmlReader import DataReader
 import math
+from DataReaders.HtmlReader import DataReader
 
 class PrettyData():
-    '''Class which retrives data and holds data from the Data directory'''
+    '''Class which retrives data from a file with the help of the passed reader object
+       and stores in a form of a dictionary'''
+    
     def __init__(self, dataReader: DataReader):
         self.reader = dataReader
-        self.reader.readFile()
         self.dataTable = {}
-    
-    def updateReaderContents(self, filename):
-        '''Updates data from file with passed filename'''
-        if(self.dataTable):
-            self.dataTable = self.dataTable.clear()
-            self.dataTable = {}
-        self.reader.setFilename(filename)
+
+    def runReader(self):
+        '''Reads the file contets with the help of the reader object'''
         self.reader.readFile()
-    
+        
+    def updateReader(self, filename):
+        '''Updates data from file with passed filename'''
+        self.reader.setFilename(filename)
+        self.runReader()
+
     def populateDataTable(self):
         '''Populates the data table with chosen data'''
         self._getCityName()
@@ -31,6 +33,17 @@ class PrettyData():
         self._getWindSpeed()
         self._getPressure()
         
+    def clearDataTable(self):
+        '''Clear the data fro mthe data table'''
+        if self.dataTable:
+            self.dataTable = self.dataTable.clear()
+            self.dataTable = {}
+            
+    def updateDataTable(self):
+        '''Update the contents of the data table'''
+        self.clearDataTable()
+        self.populateDataTable()
+            
     def _getTemperature(self):
         '''Retrives temprature data from file with help of DataReader object'''
         data = self.reader.getData("td", {"class": "t"})
@@ -48,7 +61,6 @@ class PrettyData():
         '''Retrives wind speed data from file with help of DataReader object'''
         data = self.reader.getData("td", {"class": "ff_val"})
          #Add data to table only if valid
-         #Add data to table only if valid
         if data:
             for count, value in enumerate(data):
                 try:
@@ -56,7 +68,7 @@ class PrettyData():
                 except ValueError:
                     data[count] = math.nan
                     
-            self.dataTable["Wind [kmh]"] = data
+            self.dataTable["Wind speed [km/h]"] = data
         
     def _getPressure(self):
         '''Retrives humidity data from file with help of DataReader object'''
@@ -69,7 +81,7 @@ class PrettyData():
                 except ValueError:
                     data[count] = math.nan
                     
-            self.dataTable["Pressure[hPa]"] = data
+            self.dataTable["Pressure [hPa]"] = data
         
     def _getTimeData(self):
         '''Retrives time data from file with help of DataReader object'''
