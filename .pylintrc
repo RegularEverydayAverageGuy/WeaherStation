@@ -122,7 +122,7 @@ argument-naming-style=camelCase
 # Regular expression matching correct argument names. Overrides argument-
 # naming-style. If left empty, argument names will be checked with the set
 # naming style.
-argument-rgx=
+argument-rgx=_?_?[a-z][A-Za-z0-9]{1,30}$
 
 # Naming style matching correct attribute names.
 attr-naming-style=camelCase
@@ -130,7 +130,7 @@ attr-naming-style=camelCase
 # Regular expression matching correct attribute names. Overrides attr-naming-
 # style. If left empty, attribute names will be checked with the set naming
 # style.
-#attr-rgx=
+#attr-rgx=_?_?[a-z][A-Za-z0-9]{1,30}$
 
 # Bad variable names which should always be refused, separated by a comma.
 bad-names=foo,
@@ -218,11 +218,11 @@ method-naming-style=camelCase
 #method-rgx=
 
 # Naming style matching correct module names.
-module-naming-style=PascalCase
+module-naming-style=any
 
 # Regular expression matching correct module names. Overrides module-naming-
 # style. If left empty, module names will be checked with the set naming style.
-#module-rgx=
+#module-rgx=_?_?[a-z][A-Za-z0-9]{1,30}$
 
 # Colon-delimited sets of names that determine each other's naming style when
 # the name regexes allow several styles.
