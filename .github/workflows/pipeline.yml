@@ -37,4 +37,5 @@ jobs:
       #Runs all unit test inside the Tests diretory
       - name: Run unit tests
         run: |
-          .\Scripts\python -m unittest discover Tests
+          cd WeatherStation/App/
+          coverage run -m unittest discover Tests
