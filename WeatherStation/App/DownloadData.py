@@ -33,16 +33,17 @@ files = ["observation_CELJE_history.html",
          "observation_VOJSKO_history.html"]
   
 def runUpdate():
-   #Form file URLs
-   fileURLs = utils.formFileURLs(rootURL, files)
-   #Download file from formed URLs
-   success = utils.downloadFiles(fileURLs, files) 
-   
-   return success
+    '''Updates the data from chosen URLs'''
+    #Form file URLs
+    fileURLs = utils.formFileURLs(rootURL, files)
+    #Download file from formed URLs
+    success = utils.downloadFiles(fileURLs, files) 
+    
+    return success
 
 if __name__ == '__main__':
-    success = runUpdate()
-    if success:
+    succesfullUpdate = runUpdate()
+    if succesfullUpdate:
         print("\n Succesfully downloaded and stored data from given URLs")
     else:
         print("\n Download failed!")
