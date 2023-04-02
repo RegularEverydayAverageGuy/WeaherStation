@@ -10,16 +10,17 @@ from PySide6.QtWidgets import QApplication
 from WeatherStation.App import WeatherStationApp
 from WeatherStation.App import DownloadData
 
-progDescription = "Downloads, stores and displayes enviroment data from https://meteo.arso.gov.si/met/en/service2/"
+progDescription = "Downloads, stores and displayes enviroment data"
 parser= argparse.ArgumentParser(prog="WeatherStationApp", description=progDescription)
 
-parser.add_argument("-u", "--update", action="store_true", help="Updates the weather data from ARSO website")
+helpText = "Updates the weather data from ARSO website"
+parser.add_argument("-u", "--update", action="store_true", help=helpText)
 args = parser.parse_args()
 
 if __name__ == '__main__':
     
     #Is data update chosen
-    if(args.update):
+    if args.update:
         DownloadData.runUpdate()
     
     app = QApplication(sys.argv)

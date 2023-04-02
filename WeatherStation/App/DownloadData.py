@@ -5,7 +5,7 @@ Created on Tue Mar  7 20:16:53 2023
 @author: dalib
 """
 
-from utils import utils
+from WeatherStation.App.utils import utils
 
 #This is the root URL from which the data will be downloaded
 rootURL = "https://meteo.arso.gov.si/uploads/probase/www/observ/surface/text/en/"
@@ -31,13 +31,18 @@ files = ["observation_CELJE_history.html",
          "observation_SLOVE-GRA_history.html",
          "observation_VOGEL_history.html",
          "observation_VOJSKO_history.html"]
-     
-#Form file URLs
-fileURLs = utils.formFileURLs(rootURL, files)
-#Download file from formed URLs
-success = utils.downloadFiles(fileURLs, files)
+  
+def runUpdate():
+   #Form file URLs
+   fileURLs = utils.formFileURLs(rootURL, files)
+   #Download file from formed URLs
+   success = utils.downloadFiles(fileURLs, files) 
+   
+   return success
 
-if success:
-    print("\n Succesfully downloaded and stored data from given URLs")
-else:
-    print("\n Download failed!")
+if __name__ == '__main__':
+    success = runUpdate()
+    if success:
+        print("\n Succesfully downloaded and stored data from given URLs")
+    else:
+        print("\n Download failed!")

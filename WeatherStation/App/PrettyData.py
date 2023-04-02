@@ -6,7 +6,7 @@ Created on Tue Mar 21 22:48:03 2023
 """
 
 import math
-from DataReaders.HtmlReader import DataReader
+from WeatherStation.App.DataReaders.HtmlReader import DataReader
 
 class PrettyData():
     '''Class which retrives data from a file with the help of the passed reader object

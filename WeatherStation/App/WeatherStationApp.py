@@ -5,17 +5,15 @@ Created on Wed Mar 15 21:05:45 2023
 @author: dalib
 """
 
-import sys
 import os
 import copy
 import itertools
-from PySide6.QtWidgets import QApplication
 from PySide6.QtGui import QAction
 import pyqtgraph as pg
-from DataReaders import HtmlReader
-from PrettyData import PrettyData
+from WeatherStation.App.DataReaders import HtmlReader
+from WeatherStation.App.PrettyData import PrettyData
 
-uiclass, baseclass = pg.Qt.loadUiType("MainWindow.ui")
+uiclass, baseclass = pg.Qt.loadUiType(os.path.dirname(__file__) + "\MainWindow.ui")
 
 class MainWindow(uiclass, baseclass):
     '''Class for controlling the MainWindow UI'''
@@ -26,7 +24,6 @@ class MainWindow(uiclass, baseclass):
         self.reader = HtmlReader.HTMLReader("")
         self.data = PrettyData(self.reader)
         self.graphs = [self.temperatureGraph, self.windGraph, self.pressureGraph]
-        self.measuringValues = ['Temperature', 'Wind speed', 'Pressure']
         #Dropdown menu
         self.setUpDropDownMenu()
         #Plot styles
@@ -39,7 +36,8 @@ class MainWindow(uiclass, baseclass):
         self.menuBar = self.menuBar()
         self.dropList = self.menuBar.addMenu("Data") 
         #Populate the action menu with filenames of loaded data
-        filenames = os.listdir("./Data/")
+        self.currPath = os.path.dirname(__file__)
+        filenames = os.listdir( self.currPath + "/Data")
         for filename in itertools.islice(filenames, 0, 24):
             self.dropList.addAction(filename)
         self.dropList.triggered[QAction].connect(self.onChosenFile)
@@ -73,7 +71,7 @@ class MainWindow(uiclass, baseclass):
             
     def readData(self, filename):
         '''Reads the data chosen from the drop down menu'''
-        self.data.updateReader("./Data/" + filename)
+        self.data.updateReader(self.currPath + "/Data/" + filename)
         self.data.updateDataTable()
     
     def onChosenFile(self, action):
@@ -96,7 +94,10 @@ class MainWindow(uiclass, baseclass):
         '''Updates the temperature graph'''
         #Update x and y axis data
         #Thin out the time data string so they do not overlap when displayed
-        timeStamps = copy.deepcopy(self.data.dataTable["Time"])
+        timeStamps = []
+        if "Time" in self.data.dataTable.keys():
+            timeStamps = copy.deepcopy(self.data.dataTable["Time"])
+            
         refinedTimeStamps = self._refineLabels(timeStamps, 8)
         timeStampTuple= tuple(enumerate(refinedTimeStamps))
         labels = list(dict(timeStampTuple).keys())
@@ -104,7 +105,9 @@ class MainWindow(uiclass, baseclass):
         xAxis = self.temperatureGraph.getAxis("bottom")
         xAxis.setTicks([timeStampTuple])
         #Y axis data
-        temperature = self.data.dataTable["Temperature"]
+        temperature = []
+        if "Temperature" in self.data.dataTable.keys():
+            temperature = self.data.dataTable["Temperature"]
         #Update plot
         self.temperatureGraph.clear()
         self.temperatureGraph.setLabel('left', 'Temperature [°C]', **self.labelStyle)
@@ -114,7 +117,10 @@ class MainWindow(uiclass, baseclass):
         '''Updates the wind graph'''
         #Update x and y axis data
         #refine the x axis labels so they do not overlap on the plot
-        timeStamps = copy.deepcopy(self.data.dataTable["Time"])
+        timeStamps = []
+        if "Time" in self.data.dataTable.keys():
+            timeStamps = copy.deepcopy(self.data.dataTable["Time"])
+            
         refinedTimeStamps = self._refineLabels(timeStamps, 8)
         timeStampTuple= tuple(enumerate(refinedTimeStamps))
         labels = list(dict(timeStampTuple).keys())
@@ -122,7 +128,9 @@ class MainWindow(uiclass, baseclass):
         xAxis = self.windGraph.getAxis("bottom")
         xAxis.setTicks([timeStampTuple])
         #Y axis data
-        windSpeed = self.data.dataTable["Wind speed"]
+        windSpeed = []
+        if "Time" in self.data.dataTable.keys():
+            windSpeed = self.data.dataTable["Wind speed"]
         #Update plot
         self.windGraph.clear()
         self.windGraph.setLabel('left', 'Wind speed [km/h]', **self.labelStyle)
@@ -132,7 +140,10 @@ class MainWindow(uiclass, baseclass):
         '''Updates the humidity graph'''
         #Update x and y axis data
         #refine the x axis labels so they do not overlap on the plot
-        timeStamps = copy.deepcopy(self.data.dataTable["Time"])
+        timeStamps = []
+        if "Time" in self.data.dataTable.keys():
+            timeStamps = copy.deepcopy(self.data.dataTable["Time"])
+            
         refinedTimeStamps = self._refineLabels(timeStamps, 8)
         timeStampTuple= tuple(enumerate(refinedTimeStamps))
         labels = list(dict(timeStampTuple).keys())
@@ -140,13 +151,10 @@ class MainWindow(uiclass, baseclass):
         xAxis = self.pressureGraph.getAxis("bottom")
         xAxis.setTicks([timeStampTuple])
         #Y axis data
-        pressure = self.data.dataTable["Pressure"]
+        pressure = []
+        if "Pressure" in self.data.dataTable.keys():
+            pressure = self.data.dataTable["Pressure"]
         #Update plot
         self.pressureGraph.clear()
         self.pressureGraph.setLabel('left', 'Pressure [hPa]', **self.labelStyle)
         self.pressureGraph.plot(labels, pressure, pen=self.plotPen, symbol="o")
-        
-app = QApplication(sys.argv)
-w = MainWindow()
-w.show()
-app.exec()
