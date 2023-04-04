@@ -1,0 +1,2 @@
+include WeatherStation/App/MainWindow.ui
+recursive-include  WeatherStation/App/Data *
