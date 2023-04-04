@@ -5,6 +5,7 @@ Created on Tue Mar  7 20:16:53 2023
 @author: dalib
 """
 
+import os
 from WeatherStation.App.utils import utils
 
 #This is the root URL from which the data will be downloaded
@@ -34,10 +35,14 @@ files = ["observation_CELJE_history.html",
   
 def runUpdate():
     '''Updates the data from chosen URLs'''
+    #Append the current director path to filenames
+    currDir = os.path.dirname(__file__)
+    filePaths =[currDir + "\\Data\\" + file for file in files]
+    
     #Form file URLs
     fileURLs = utils.formFileURLs(rootURL, files)
     #Download file from formed URLs
-    success = utils.downloadFiles(fileURLs, files) 
+    success = utils.downloadFiles(fileURLs, filePaths) 
     
     return success
 
