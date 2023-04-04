@@ -17,14 +17,14 @@ helpText = "Updates the weather data from ARSO website"
 parser.add_argument("-u", "--update", action="store_true", help=helpText)
 args = parser.parse_args()
 
-if __name__ == '__main__':
-    
+def main():
+    ''''Runs the WeatherStationApp application'''
     #Is data update chosen
     if args.update:
         DownloadData.runUpdate()
     
     app = QApplication(sys.argv)
-    w = WeatherStationApp.MainWindow()
-    w.show()
+    appWindow = WeatherStationApp.MainWindow()
+    appWindow.show()
     app.exec()
     
