@@ -25,7 +25,7 @@ def downloadFiles(fileURLs, fileNames):
     #Download and store the data
     for i in tqdm(range(0, len(fileURLs)), desc = "Downloading and storig data"):
         response = requests.get(fileURLs[i], timeout=15)#We wait for max 5s for the responseunites
-        filename = "./Data/" + fileNames[i]
+        filename = fileNames[i]
         os.makedirs(os.path.dirname(filename), exist_ok=True)
         with open(filename, "wb") as file:
             file.write(response.content)

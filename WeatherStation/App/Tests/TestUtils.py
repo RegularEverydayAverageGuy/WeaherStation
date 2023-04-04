@@ -40,6 +40,6 @@ class TestUtils(unittest.TestCase):
     def testValidURL(self):
         '''Test if valid URLs store properly store downloaded data'''
         url = "https://meteo.arso.gov.si/uploads/probase/www/observ/surface/text/"
-        filename = "observation_CELJE_history.html"
+        filename = ".Data/observation_CELJE_history.html"
         success = utils.downloadFiles([url+filename], [filename])
         self.assertTrue(success)
