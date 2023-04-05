@@ -6,7 +6,7 @@ Created on Thu Mar 30 20:24:24 2023
 """
 from setuptools import setup, find_packages
 
-with open("C:/Projekti/RLS/WeatherStation/requirements.txt", 'rb') as f:
+with open("requirements.txt", 'r') as f:
     required = f.read().splitlines()
 
 setup(
