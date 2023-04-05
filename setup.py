@@ -15,9 +15,10 @@ with open("requirements.txt", 'r') as f:
 
 setup(
     name="WeatherStationApp",
-    version="0.0.6",
+    version="0.0.7",
     description="Display data from https://meteo.arso.gov.si/met/en/service2/",
     long_description=long_description,
+    long_description_content_type="text/markdown",
     url="https://github.com/RegularEverydayAverageGuy/WeatherStation",
     author="Dalibor Maljuric",
     author_email="dalibor.maljuric@gmail.com",
