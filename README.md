@@ -11,8 +11,16 @@ Install application form TestPyPi server
 ```
 pip install weatherStationApp
 ```
+Or you can download the source code directly from repo to you virtual environment
+```
+git clone https://github.com/RegularEverydayAverageGuy/WeatherStation
+```
 ## Run
 Run the application
+```
+weatherStation
+```
+You can also run it with the **-u** flag which updates the enviroment data
 ```
 weatherStation -u
 ```
