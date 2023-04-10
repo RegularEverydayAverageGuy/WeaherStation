@@ -12,7 +12,7 @@ this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text(encoding="UTF-8")
 
 currDir = os.path.dirname(__file__)
-requirmentsPath = currDir + "\\requirements.txt"
+requirmentsPath = currDir + "/requirements.txt"
 
 with open(requirmentsPath, 'r', encoding = "UTF-8") as f:
     required = f.read().splitlines()
