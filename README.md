@@ -37,4 +37,6 @@ The test are stored in the **WeatherStation/App/Test** subdirectory and can be r
 ```
 coverage run -m unittest discover Tests
 ```
-if you are located in the parent directory of Tests where the test results are also stored in the *htmlcov** subdirectory.
+if you are located in the parent directory of Tests. 
+
+Test results are stored in the **htmlcov** subdirectory.
