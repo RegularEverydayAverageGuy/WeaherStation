@@ -27,4 +27,7 @@ def main():
     appWindow = WeatherStationApp.MainWindow()
     appWindow.show()
     app.exec()
+
+if __name__=="__main__":
+    main()
     
