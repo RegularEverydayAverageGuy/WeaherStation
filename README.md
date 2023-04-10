@@ -1,5 +1,8 @@
 # WeatherStation GUI application
 ## Python GUI application that collects and displays enviroment data from the https://meteo.arso.gov.si/met/en/service2/ website.
+
+![AltText](WeatherStationApp.gif)
+
 This project is a simple approach of displaying enviroment data from the Slovenian environment agency. It displays temperature, wind speed and humidity data for 20 Slovenian cities listed on the agency website. The user can display all three data categories for one city at once.
 ### Installation
 Create virtual environment
