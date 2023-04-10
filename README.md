@@ -13,7 +13,7 @@ python -m venv .
 ```
 Install application from the TestPyPi server
 ```
-pip install weatherStationApp
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ WeatherStationApp
 ```
 Or you can download the source code directly from the repository to your virtual environment
 ```
@@ -30,7 +30,7 @@ weatherStation -u
 ```
 Or if you download the source code
 ```
-python weatherStation.py -u
+python weatherStationRun.py -u
 ```
 ### Tests
 The test are stored in the **WeatherStation/App/Test** subdirectory and can be run with the source code
