@@ -6,7 +6,7 @@ Created on Thu Mar 30 20:24:24 2023
 """
 from setuptools import setup, find_packages
 
-with open("requirements.txt", 'r') as f:
+with open("requirements.txt", 'r', encoding="utf-8") as f:
     required = f.read().splitlines()
 
 setup(
