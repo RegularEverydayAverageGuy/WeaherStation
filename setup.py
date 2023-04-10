@@ -24,6 +24,8 @@ setup(
     author_email="dalibor.maljuric@gmail.com",
     license="MIT",
     packages = find_packages(),
+    package_dir={"": "WeatherStation"},
+    package_data={"App": ["MainWindow.ui", "Data/*"],},
     include_package_data=True,
     python_requires=">=3.7",
     install_requires=required,
