@@ -35,6 +35,6 @@ setup(
         "Programming Language :: Python :: 3.7",
     ],
     entry_points={
-        "console_scripts": ["WeatherStation=WeatherStation.cli:main"],
+        "console_scripts": ["WeatherStation=WeatherStation.weatherStation:main"],
     },
 )
