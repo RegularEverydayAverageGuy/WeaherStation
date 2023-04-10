@@ -4,13 +4,17 @@ Created on Thu Mar 30 20:24:24 2023
 
 @author: dalib
 """
+import os
 from pathlib import Path
 from setuptools import setup, find_packages
 
 this_directory = Path(__file__).parent
 long_description = (this_directory / "README.md").read_text(encoding="UTF-8")
 
-with open("requirements.txt", 'r', encoding = "UTF-8") as f:
+currDir = os.path.dirname(__file__)
+requirmentsPath = currDir + "\\requirements.txt"
+
+with open(requirmentsPath, 'r', encoding = "UTF-8") as f:
     required = f.read().splitlines()
 
 setup(
@@ -24,7 +28,7 @@ setup(
     author_email="dalibor.maljuric@gmail.com",
     license="MIT",
     packages = find_packages(),
-    package_data={"App": ["", "/WeatherStation/App/Data/*"], "App":["", "/WeatherStation/App/MainWindow.ui"]},
+    package_data={"App": ["", "/WeatherStation/App/Data/*", "/WeatherStation/App/MainWindow.ui"]},
     include_package_data=True,
     python_requires=">=3.7",
     install_requires=required,
