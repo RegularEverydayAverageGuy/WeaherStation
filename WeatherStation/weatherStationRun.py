@@ -28,3 +28,6 @@ def main():
     appWindow.show()
     app.exec()
     
+if __name__ == "__main__":
+    main()
+    
