@@ -15,7 +15,7 @@ with open("requirements.txt", 'r', encoding = "UTF-8") as f:
 
 setup(
     name="WeatherStationApp",
-    version="2.0.4",
+    version="2.0.5",
     description="Display data from https://meteo.arso.gov.si/met/en/service2/",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -24,7 +24,7 @@ setup(
     author_email="dalibor.maljuric@gmail.com",
     license="MIT",
     packages = find_packages(),
-    package_data={"App": ["MainWindow.ui", "Data/*"],},
+    package_data={"App": ["", "/WeatherStation/App/Data/*"], "App":["", "/WeatherStation/App/MainWindow.ui"]},
     include_package_data=True,
     python_requires=">=3.7",
     install_requires=required,
