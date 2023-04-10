@@ -13,7 +13,13 @@ import pyqtgraph as pg
 from WeatherStation.App.DataReaders import HtmlReader
 from WeatherStation.App.PrettyData import PrettyData
 
-uiclass, baseclass = pg.Qt.loadUiType(os.path.dirname(__file__) + "\\MainWindow.ui")
+
+uiFile = "MainWindow.ui"
+
+if os.path.dirname(__file__) != "":
+    uiFile = "\\" + uiFile
+
+uiclass, baseclass = pg.Qt.loadUiType(os.path.dirname(__file__) + uiFile)
 
 class MainWindow(uiclass, baseclass):
     '''Class for controlling the MainWindow UI'''
