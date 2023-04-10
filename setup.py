@@ -15,7 +15,7 @@ with open("requirements.txt", 'r', encoding = "UTF-8") as f:
 
 setup(
     name="WeatherStationApp",
-    version="1.0.0",
+    version="0.0.1",
     description="Display data from https://meteo.arso.gov.si/met/en/service2/",
     long_description=long_description,
     long_description_content_type="text/markdown",
