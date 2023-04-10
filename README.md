@@ -39,4 +39,4 @@ coverage run -m unittest discover Tests
 ```
 if you are located in the parent directory of Tests. 
 
-Test results are stored in the **htmlcov** subdirectory.
+Tests run report is stored in the **htmlcov** subdirectory.
